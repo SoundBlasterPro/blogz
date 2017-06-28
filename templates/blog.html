@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+    
+    {% block content %}
+    <h1>All the blogs</h1>
+    <hr/>
+    {% if blogs|length == 0 %}
+    <p>Nothing to show. Time to write a blog post!</p>
+    {% else %}
+            {% for blog in blogs %}
+            <form action="/display", method="GET">
+                <h2><a href="/display?blog.id={{blog.id}}">{{blog.title}}</a></h2>
+            </form>
+                <p>{{blog.body}}</p>
+                <!--lazy button to navigate to blog since I can't figure out how to use href-->
+                <input type="hidden" name="blog.id" value="{{ blog.id }}"/>
+                <input type="submit", value="view"/>
+                <hr/>
+            {% endfor %}
+    {% endif %}
+
+        
+{% endblock %}
+<!--?id={{blog.id}}"--> 
