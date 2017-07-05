@@ -33,7 +33,7 @@ def blogpost():
         if not blog_title:
             title_error = "Please enter a title!"
         if not blog_body:
-            blog_error = "Did you forget to write your blog?"
+            blog_error = "Who the hell writes a blank blog post?"
         if title_error or blog_error:
             return render_template("newpost.html", blog_title = blog_title, blog_body = blog_body, title_error = title_error, blog_error = blog_error)
         new_blog = Blog(blog_title, blog_body)
