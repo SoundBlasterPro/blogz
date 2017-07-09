@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>User List</h2>
+    {% for user in users %}
+    <form action = "/blog", method = "GET">
+       <li><a href="/blog?user_id={{user.user_id}}">{{user.username}}</li>
+    </form>
+    {% endfor %}
+{% endblock %}

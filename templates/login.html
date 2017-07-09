@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<p>Log in to yer blog!</p>
+<p>If you don't have an account, you may <a href="/register">register</a> here.
+<form method = "POST">
+    <label for="username">Username: </label>
+    <input name="username" type="text" value="{{username}}" id="username" /><div class="error" style="display:inline-block;">{{invalid_username}}</div>
+    <br>
+    <label for="password">Password: </label>
+    <input name="password" type="password" value="{{password}}" id="password" /><div class="error" style="display:inline-block;">{{invalid_password}}</div>
+    <br>
+    <input type="submit" value = "Log in"/>
+</form>
+
+{% endblock %}

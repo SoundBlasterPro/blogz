@@ -1,12 +1,13 @@
 {% extends "base.html" %}
     {% block content %}
     <style>
-        form {
+        .entry {
             background-color: #eee;
             padding: 20px;
             margin: 0 auto;
             width: 540px;
-            font: 16px sans-serif;
+            font: 16px;
+            font-family:Helvetica, Arial, sans-serif;
             border-radius: 10px;
         }
         textarea {
@@ -19,10 +20,12 @@
         }
     </style>
     <h1>Add a Blog Post</h1>
-    <form method="POST">
-            <label for="blog_title">Title: </label>
-            <input name="blog_title" type="blog_title" value="{{blog_title}}" id="blog_title" /><div class="error">{{title_error}}</div>
-            <textarea name="blog_body" placeholder="Pour your heart out..." value="{{blog_body}}">{{blog_body}}</textarea><div class="error">{{blog_error}}</div>
-            <input type="submit" value="Submit Post"/>
-    </form>
+    <div class="entry">
+        <form method="POST">
+                <label for="blog_title">Title: </label>
+                <input name="blog_title" type="blog_title" value="{{blog_title}}" id="blog_title" /><div class="error">{{title_error}}</div>
+                <textarea name="blog_body" placeholder="Pour your heart out..." value="{{blog_body}}">{{blog_body}}</textarea><div class="error">{{blog_error}}</div>
+                <input type="submit" value="Submit Post"/>
+        </form>
+    </div>
     {% endblock %}
