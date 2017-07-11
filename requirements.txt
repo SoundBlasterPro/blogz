@@ -1,5 +1,4 @@
 cffi==1.9.1
-conda==4.3.14
 cryptography==1.7.1
 gunicorn==19.7.1
 idna==2.2
