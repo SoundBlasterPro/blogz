@@ -3,9 +3,6 @@ cryptography==1.7.1
 gunicorn==19.7.1
 idna==2.2
 pyasn1==0.1.9
-pycosat==0.6.1
 pycparser==2.17
-pyOpenSSL==16.2.0
-pywin32==220
 requests==2.12.4
 six==1.10.0
