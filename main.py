@@ -1,37 +1,6 @@
 from flask import Flask, request, redirect, render_template, session, flash
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-app.config['DEBUG'] = True
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://blogz:fred123@localhost:8889/blogz'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://sygsapyeevhjou:177c0e3f2d1552f13bc2000d3c6eb1913e7a780932f9cea55eef7b0cf943f087@ec2-184-73-199-72.compute-1.amazonaws.com:5432/ddo005ds9e3no4'
-app.config['SQLALCHEMY_ECHO'] = True
-db = SQLAlchemy(app)
-app.secret_key = "TheGoatSingsAtMidnight"
-
-class User(db.Model):
-
-    user_id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(255))
-    password = db.Column(db.String(255))
-    blog = db.relationship("Blog", backref="owner")
-
-    def __init__(self,username,password):
-        self.username = username
-        self.password = password
-
-class Blog(db.Model):
-    blog_id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(255))
-    body = db.Column(db.Text)
-    owner_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
-        
-    def __init__(self,title,body,owner_id):
-        self.title = title
-        self.body = body
-        self.owner_id = owner_id
-
-
+from models import User, Blog
+from app import db,app
 
 @app.route("/", methods=["POST", "GET"])
 def index():
@@ -189,5 +158,6 @@ def require_login():
     if not ('user' in session or request.endpoint in endpoints_without_login):
         return redirect("/login")
 
+app.secret_key = "TheGoatSingsAtMidnight"
 if __name__ == '__main__':
     app.run()
